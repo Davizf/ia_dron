@@ -197,4 +197,4 @@ class GameProblem(SearchProblem):
                 print ('-- INITIALIZATION ERROR: There must be exactly one agent location with the label "{0}"'.format(aiBaseName))
                 return False
 
-        return True 
+        return True
