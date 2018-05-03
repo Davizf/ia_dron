@@ -1,0 +1,72 @@
+MAP=[
+	
+	[
+		['desert', 0, {'cost': 1, 'agent': None}], 
+		['desert', 0, {'cost': 1, 'agent': None}], 
+		['desert', 0, {'cost': 1, 'agent': None}], 
+		['desert', 0, {'cost': 1, 'agent': None}]
+	],
+	[
+		['desert', 0, {'cost': 1, 'agent': None}], 
+		['desert', 0, {'cost': 1, 'agent': None}], 
+		['goal', 3, {'cost': 1, 'agent': None}], 
+		['desert', 0, {'cost': 1, 'agent': None}]
+	],
+	[
+		['desert', 0, {'cost': 1, 'agent': None}], 
+		['drone-base', 0, {'cost': 1, 'agent': 'drone'}], 
+		['forest', 2, {'cost': 1, 'agent': None}], 
+		['forest', 3, {'cost': 1, 'agent': None}]
+	], 
+	[
+		['desert', 0, {'cost': 1, 'agent': None}], 
+		['goal', 2, {'cost': 1, 'agent': None}], 
+		['goal', 4, {'cost': 1, 'agent': None}], 
+		['sea', 1, {'agent': None, 'blocked': True}]
+	], 
+	[
+		['desert', 0, {'cost': 1, 'agent': None}], 
+		['desert', 0, {'cost': 1, 'agent': None}], 
+		['desert', 0, {'cost': 1, 'agent': None}], 
+		['desert', 0, {'cost': 1, 'agent': None}]
+	], 
+	[
+		['goal', 1, {'cost': 1, 'agent': None}], 
+		['desert', 0, {'cost': 1, 'agent': None}], 
+		['desert', 0, {'cost': 1, 'agent': None}], 
+		['desert', 0, {'cost': 1, 'agent': None}]
+	], 
+	[
+		['desert', 0, {'cost': 1, 'agent': None}], 
+		['forest', 1, {'cost': 1, 'agent': None}], 
+		['desert', 0, {'cost': 1, 'agent': None}], 
+		['forest', 4, {'cost': 1, 'agent': None}]
+	], 
+	[
+		['desert', 0, {'cost': 1, 'agent': None}], 
+		['desert', 0, {'cost': 1, 'agent': None}], 
+		['desert', 0, {'cost': 1, 'agent': None}], 
+		['forest', 5, {'cost': 1, 'agent': None}]
+	], 
+	[	
+		['desert', 0, {'cost': 1, 'agent': None}], 
+		['desert', 0, {'cost': 1, 'agent': None}], 
+		['desert', 0, {'cost': 1, 'agent': None}], 
+		['desert', 0, {'cost': 1, 'agent': None}]
+	], 
+	[
+		['desert', 0, {'cost': 1, 'agent': None}], 
+		['desert', 0, {'cost': 1, 'agent': None}], 
+		['desert', 0, {'cost': 1, 'agent': None}], 
+		['desert', 0, {'cost': 1, 'agent': None}]
+	]
+] 
+
+
+POSITIONS =  {
+	'goal': [(1, 2), (3, 1), (3, 2), (5, 0)], 
+	'drone-base': [(2, 1)], 'drone': [(2, 1)], 
+	'forest': [(2, 2), (2, 3), (6, 1), (6, 3), (7, 3)], 
+	'sea': [(3, 3)], 
+	'desert': [(0, 0), (0, 1), (0, 2), (0, 3), (1, 0), (1, 1), (1, 3), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 3), (5, 1), (5, 2), (5, 3), (6, 0), (6, 2), (7, 0), (7, 1), (7, 2), (8, 0), (8, 1), (8, 2), (8, 3), (9, 0), (9, 1), (9, 2), (9, 3)]
+} 
