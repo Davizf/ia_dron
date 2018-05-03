@@ -20,14 +20,6 @@ class GameProblem(SearchProblem):
 
 
 
-#        if state[0][1]!=0 and self.POSITIONS["sea"][0]!=(state[0][0],state[0][1]-1) ## Hay que poner mas casillas de mar
-#            actions.append("N",(state[0][0],state[0][1]-1))
-#        if state[0][1]!=3 and self.POSITIONS["sea"][0]!=(state[0][0],state[0][1]+1) ## Hay que poner mas casillas de mar
-#            actions.append("S",(state[0][0],state[0][1]+1))
-#        if state[0][0]!=9 and self.POSITIONS["sea"][0]!=(state[0][0]+1,state[0][1]) ## Hay que poner mas casillas de mar
-#            actions.append("E",(state[0][0]+1,state[0][1]))
-#        if state[0][0]!=0 and self.POSITIONS["sea"][0]!=(state[0][0]-1,state[0][1]) ## Hay que poner mas casillas de mar
-#            actions.append("W",(state[0][0]-1,state[0][1]))
 
     # --------------- Common functions to a SearchProblem -----------------
 
@@ -36,27 +28,83 @@ class GameProblem(SearchProblem):
 
         '''Returns a LIST of the actions that may be executed in this state
         '''
-        actions = []
-        if state[0][1]!=0 and self.POSITIONS["sea"][0]!=(state[0][0],state[0][1]-1) ## Hay que poner mas casillas de mar
-            actions.append("N")
-        if state[0][1]!=3 and self.POSITIONS["sea"][0]!=(state[0][0],state[0][1]+1) ## Hay que poner mas casillas de mar
-            actions.append("S")
-        if state[0][0]!=9 and self.POSITIONS["sea"][0]!=(state[0][0]+1,state[0][1]) ## Hay que poner mas casillas de mar
-            actions.append("E")
-        if state[0][0]!=0 and self.POSITIONS["sea"][0]!=(state[0][0]-1,state[0][1]) ## Hay que poner mas casillas de mar
-            actions.append("W")
+        actions = {}
+        if state[0][1]!=0 and self.POSITIONS["sea"][0]!=(state[0][0],state[0][1]-1): ## Hay que poner mas casillas de mar
+            actions["North"] = (state[0][0],state[0][1]-1)
+        if state[0][1]!=3 and self.POSITIONS["sea"][0]!=(state[0][0],state[0][1]+1): ## Hay que poner mas casillas de mar
+            actions["South"] = (state[0][0],state[0][1]+1)
+        if state[0][0]!=9 and self.POSITIONS["sea"][0]!=(state[0][0]+1,state[0][1]): ## Hay que poner mas casillas de mar
+            actions["East"] = (state[0][0]+1,state[0][1])
+        if state[0][0]!=0 and self.POSITIONS["sea"][0]!=(state[0][0]-1,state[0][1]): ## Hay que poner mas casillas de mar
+            actions["West"] = (state[0][0]-1,state[0][1])
 
         return actions
-    actions[N,S,E,W]
 
     def result(self, state, action):
         '''Returns the state reached from this state when the given action is executed
         '''
         #return self.mapaProblema[state][action]
         newState = []
+        auxState = state
 
+        if "North" in actions:
+        	if actions["North"] in self.POSITIONS["goal"]:
+           		for i in range((len(auxState)-1)):
+           			for j in self.POSITIONS["goal"]:
+           				if auxState[i] == j:
+           					del auxState[i]
+           					#i++
+           		newState.append(action["North"])
+           		newState.append(auxState)
+           		return newState
+           	else:
+           		newState.append(action["North"])
+           		newState.append(state[1:(len(state))-1])
+           		return newState
+        if "South" in actions:
+           	if actions["South"] in self.POSITIONS["goal"]:
+           		for i in range((len(auxState)-1)):
+           			for j in self.POSITIONS["goal"]:
+           				if auxState[i] == j:
+           					del auxState[i]
+           					#i++
+           		newState.append(action["South"])
+           		newState.append(auxState)
+           		return newState
+           	else:
+           		newState.append(action["South"])
+           		newState.append(state[1:(len(state))-1])
+           		return newState
 
-        return
+        if "East" in actions:
+           	if actions["East"] in self.POSITIONS["goal"]:
+           		for i in range((len(auxState)-1)):
+           			for j in self.POSITIONS["goal"]:
+           				if auxState[i] == j:
+           					del auxState[i]
+           					#i++
+           		newState.append(action["East"])
+           		newState.append(auxState)
+           		return newState
+           	else:
+           		newState.append(action["East"])
+           		newState.append(state[1:(len(state))-1])
+           		return newState
+        if "West" in actions:
+           	if actions["West"] in self.POSITIONS["goal"]:
+           		for i in range((len(auxState)-1)):
+           			for j in self.POSITIONS["goal"]:
+           				if auxState[i] == j:
+           					del auxState[i]
+           					#i++
+           		newState.append(action["West"])
+           		newState.append(auxState)
+           		return newState
+           	else:
+           		newState.append(action["West"])
+           		newState.append(state[1:(len(state))-1])
+           		return newState
+           		
 
     def is_goal(self, state):
         '''Returns true if state is the final state
