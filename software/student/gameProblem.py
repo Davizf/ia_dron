@@ -29,13 +29,13 @@ class GameProblem(SearchProblem):
         '''Returns a LIST of the actions that may be executed in this state
         '''
         actions = {}
-        if state[0][1]!=0 and self.POSITIONS["sea"][0]!=(state[0][0],state[0][1]-1): ## Hay que poner mas casillas de mar
+        if state[0][1]!=0 and (state[0][0],state[0][1]-1) not in self.POSITIONS["sea"]: 
             actions["North"] = (state[0][0],state[0][1]-1)
-        if state[0][1]!=3 and self.POSITIONS["sea"][0]!=(state[0][0],state[0][1]+1): ## Hay que poner mas casillas de mar
+        if state[0][1]!=3 and (state[0][0],state[0][1]+1) not in self.POSITIONS["sea"]: 
             actions["South"] = (state[0][0],state[0][1]+1)
-        if state[0][0]!=9 and self.POSITIONS["sea"][0]!=(state[0][0]+1,state[0][1]): ## Hay que poner mas casillas de mar
-            actions["East"] = (state[0][0]+1,state[0][1])
-        if state[0][0]!=0 and self.POSITIONS["sea"][0]!=(state[0][0]-1,state[0][1]): ## Hay que poner mas casillas de mar
+        if state[0][0]!=9 and (state[0][0]+1,state[0][1]) not in self.POSITIONS["sea"]: 
+            actions["East"] = (state[0][0]+1,state[0][1]) 
+        if state[0][0]!=0 and (state[0][0]-1,state[0][1]) not in self.POSITIONS["sea"]: 
             actions["West"] = (state[0][0]-1,state[0][1])
 
         return actions
