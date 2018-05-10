@@ -56,12 +56,22 @@ class GameProblem(SearchProblem):
 		elif action == "West":
 			next_position_dron = (state[0][0]-1,state[0][1])
 		
+
+		if(next_position_dron in self.POSITIONS["drone-base"]):
+			# cargar la bateria
+			battery = 40
+		else:
+			# consumir la bateria
+			battery = state[2]-1
+
 		nextState = (next_position_dron, \
-			tuple([elem for elem in self.POSITIONS["goal"] if not elem == next_position_dron and elem in state[1]]))
+			tuple([elem for elem in self.POSITIONS["goal"] if not elem == next_position_dron and elem in state[1]]), \
+			battery)
 			# generar las casillas que quedan por tomar la foto desde la lista de casillas "goal"
 			# se selecciona: 
 			# - si la casilla de la posicion siguiente no es para cada uno de las casillas "goal"
 			# - si para cada casilla "goal" esta en el estado actual
+
 		return nextState
 
 
@@ -75,12 +85,26 @@ class GameProblem(SearchProblem):
 			The returned value is a number (integer or floating point).
 			By default this function returns `1`.
 		'''
-		return 1
+		
+		# obtener el nombre de la casilla
+		square_name = [key for key in self.POSITIONS.keys() if state[0] in self.POSITIONS[key]]
+		# obtener el coste de tiempo de la casilla
+		for i in range(0,len(self.MAP)):
+			for j in range(0,len(self.MAP[i])):
+				if square_name[0] == self.MAP[i][j][0]:
+					cost = self.MAP[i][j][2]["cost"]
+		# retornar el coste que corresponde a la casilla
+		return cost
 
 	def heuristic(self, state):
 		'''Returns the heuristic for `state`
 		'''
-		return len(state[1])
+		# si el dron tiene baja bateria primero vuelve a su base para cargar
+		if state[2] < 28:
+			return 999
+		# si no tiene baja bateria entonces devuelve el numero de casillas por tomar fotos
+		else:
+			return len(state[1])
 
 
 	def setup (self):
@@ -89,10 +113,12 @@ class GameProblem(SearchProblem):
 		print 'POSITIONS: ', self.POSITIONS, '\n'
 		print 'CONFIG: ', self.CONFIG, '\n'
 
-		initial_state = ((self.POSITIONS['drone-base']))
-		initial_state.append(tuple(self.POSITIONS['goal']))
-		final_state =  (self.POSITIONS['drone-base'][0],())
-		
+		initial_state = ((self.POSITIONS['drone-base']))	
+		initial_state.append(tuple(self.POSITIONS['goal']))	
+		initial_state.append(40)	
+		# initial_state ( ( casilla donde localiza el dron), (casillas para tomar foto), bateria del dron)
+		final_state =  (self.POSITIONS['drone-base'][0],(),40)	# estado final del dron 
+		# final_state ( (casilla del dron base), (), bateria del dron = 100 )
 		algorithm = simpleai.search.astar
 
 		return tuple(initial_state),final_state,algorithm

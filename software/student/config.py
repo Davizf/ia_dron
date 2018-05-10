@@ -1,7 +1,7 @@
 configuration = {
 "text_size": 150,
 "tile_size": 60,
-"type": "load", #"random"
+"type": "random", #"random"
 "seed": None,
 "file": "./map.txt",
 "map_size": [10, 4],
@@ -24,14 +24,14 @@ configuration = {
         "id":  "desert",
         "marker": 'D',
         "attributes":
-             {"agent":None,"cost": 1}
+             {"agent":None,"cost": 2}
         },
     "desert-traversed": {
         "img": "game/graphics/terrains/desertTraversed100.png",
         "id":  "desert-traversed",
         "marker": 'd',
         "attributes":
-             {"agent":None,"cost": 1}
+             {"agent":None,"cost": 2}
         },
     "plains": {
         "img": "game/graphics/terrains/plains100.png",
@@ -55,7 +55,7 @@ configuration = {
         "marker": 'H',
         "num": 0,
         "attributes":
-             {"agent":None,"cost": 1},
+             {"agent":None,"cost": 5},
         },
     "hills-traversed": {
         "img": "game/graphics/terrains/hillsTraversed100.png",
@@ -63,7 +63,7 @@ configuration = {
         "marker": 'h',
         "num": 0,
         "attributes":
-             {"agent":None,"cost": 1},
+             {"agent":None,"cost": 5},
         },
     "forest": {
         "img": "game/graphics/terrains/forest100.png",
@@ -71,7 +71,7 @@ configuration = {
         "marker": 'F',
         "num": 5,
         "attributes":
-             {"agent":None,"cost": 1},
+             {"agent":None,"cost": 7},
         },
     "forest-traversed": {
         "img": "game/graphics/terrains/forestTraversed100.png",
@@ -79,7 +79,7 @@ configuration = {
         "marker": 'f',
         "num": 0,
         "attributes":
-             {"agent":None,"cost": 1},
+             {"agent":None,"cost": 7},
         },
     "sea": {
         "img": "game/graphics/terrains/sea100.png",
@@ -101,9 +101,9 @@ configuration = {
         "img": "game/graphics/locations/camera100.png",
         "id":  "goal",
         "marker": 'G',
-        "num": 4,
+        "num": 3,
         "attributes":
-             {"agent":None,"cost": 1},
+             {"agent":None,"cost": 4},
         },
     "goal-traversed": {
         "img": "game/graphics/locations/cameraTraversed100.png",
@@ -119,7 +119,7 @@ configuration = {
         "marker": 'B',
         "num": 0,
         "attributes":
-             {"agent":None,"cost": 1},
+             {"agent":None,"cost": 2},
         },
     "drone-base-traversed": {
         "img": "game/graphics/locations/droneBaseTraversed100.png",
@@ -127,7 +127,7 @@ configuration = {
         "marker": 'b',
         "num": 0,
         "attributes":
-             {"agent":None,"cost": 1},
+             {"agent":None,"cost": 2},
         }
      }
 }
